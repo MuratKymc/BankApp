@@ -46,6 +46,7 @@ public class Account {
     public boolean checkBalance(double amount){
         if (this.balance < amount ){
             System.out.println("Yeterli bakiye yok.");
+            System.out.println("hhhh");
             return false;
         }else
             return true;
