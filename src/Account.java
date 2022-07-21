@@ -13,7 +13,6 @@ public class Account {
         this.bank = bank;
         this.customer = customer;
         addAccountToBank();
-        addAccountToCustomer();
     }
 
     public Bank getBank() {

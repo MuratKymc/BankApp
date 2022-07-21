@@ -34,15 +34,38 @@ public class Test {
                 String tcID= input.nextLine();
                 System.out.println("Müþteri bankasýný seçiniz: ");
                 bankalar();
-
                 int i=input.nextInt();
                 System.out.println("Müþteri kaydýnýz "+ i+". bankaya eklendi!");
-                Customer firstCust= new Customer("Murat","Kuyumcu", "37867898763", banks.get(i-1));
+                banks.get(i-1).addCustomer(new Customer(isim,soyisim, tcID, banks.get(i-1)));
                 welcome();
+            } else if(a.equals("3")){
+                System.out.println(" Hesap numarasý giriniz: ");
+                String id= input.next();
+                System.out.println(" Hesabýn tipini giriniz: ");
+                String type=input.next();
+                System.out.println("Müþteri bankasýný seçiniz: ");
+                bankalar();
+                int i=input.nextInt();
+                banks.get(i-1).writeCustomers();
+                int j=input.nextInt();
+                banks.get(i-1).getCustomerList().get(j-1).addAccount(new Account(id,type,0,banks.get(i-1),banks.get(i-1).getCustomerList().get(j-1)));
+
+            } else if (a.equals("4")) {
+                System.out.println("Bankanýn müþterilerini görüntüle");
+                banks.get(banks.size()).writeCustomers();
+            } else if (a.equals("5")) {
+                System.out.println("Müþterinin hesaplarýný görüntüle");
+                banks.get(banks.size()).getCustomerList().get(0).writeAccount();
+
             }
 
 
-            }
+        }
+
+        //banks.get(0).writeCustomers();
+
+        //banks.get(0).getCustomerList().get(0).writeAccount();
+
 
     }
     public static void welcome(){
