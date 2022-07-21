@@ -5,17 +5,18 @@ public class Customer {
     private String name;
     private String lastName;
     private String TC;
-
+    private Bank bank;
     private ArrayList<Account> accountList = new ArrayList<>();
 
-    public Customer(String name, String lastName, String TC  ) {
+    public Customer(String name, String lastName, String TC, Bank bank) {
         this.name = name;
         this.lastName = lastName;
         this.TC = TC;
+        this.bank = bank;
     }
-    public void addAccount(Account account){
-        accountList.add(account);
-        System.out.println("Hesap baþarýyla eklendi.");
+
+    public Bank getBank() {
+        return bank;
     }
 
     public String getName() {
@@ -59,7 +60,15 @@ public class Customer {
                 ", accountList=" + accountList +
                 "}\n";
     }
+    public void addAccount(Account account){
+        accountList.add(account);
+        System.out.println("Hesap baþarýyla eklendi.");
+    }
 
+    public void addCustomerToBank(){
+        this.bank.addCustomer(this);
+
+    }
     public void writeAccount(){
         System.out.println("\n******** " + this.name + " " + this.lastName + " Hesaplarý ********");
 

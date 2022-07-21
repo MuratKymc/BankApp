@@ -3,11 +3,25 @@ public class Account {
     private String accountID;
     private String accountType;
     private double balance;
+    private Bank bank;
+    private Customer customer;
 
-    public Account(String accountID, String accountType, double balance) {
+    public Account(String accountID, String accountType, double balance,Bank bank,Customer customer) {
         this.accountID = accountID;
         this.accountType = accountType;
         this.balance = balance;
+        this.bank = bank;
+        this.customer = customer;
+        addAccountToBank();
+        addAccountToCustomer();
+    }
+
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
     }
 
     public String getAccountID() {
@@ -46,7 +60,6 @@ public class Account {
     public boolean checkBalance(double amount){
         if (this.balance < amount ){
             System.out.println("Yeterli bakiye yok.");
-            System.out.println("hhhh");
             return false;
         }else
             return true;
@@ -90,6 +103,14 @@ public class Account {
         System.out.println("Ýþleminiz baþarýlý. Yeni bakiye : " + balance);
 
 
+    }
+
+    public void addAccountToBank(){
+        this.bank.addAccounts(this);
+    }
+
+    public void addAccountToCustomer(){
+        this.customer.addAccount(this);
     }
 
 

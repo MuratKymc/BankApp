@@ -1,33 +1,34 @@
+import com.sun.security.jgss.GSSUtil;
+
 public class Test {
 
     public static void main(String[] args) {
-        Bank ziraat = new Bank("Ziraat Bankasý");
+        Bank ziraat = new Bank("Ziraat Bankasý",2.85,0.18);
 
-        Account ac1 = new Account("123","USD",23333);
-        Customer customer = new Customer("Hamza","Yýlmaz","23566778");
-        Customer cust2 = new Customer("Murat","Kuyumcu","12311");
-        Account ac2 = new Account("123","TRY",10000);
-        Account ac = new Account("1234","TRY",10000);
+        Customer customer = new Customer("Hamza","Yýlmaz","23566778",ziraat);
+        Customer customer2 = new Customer("Murat","Kuyumcu","12311",ziraat);
 
 
-        customer.addAccount(ac1);
-        customer.addAccount(ac);
+        Account ac = new Account("1234","TRY",10000,ziraat,customer);
+        Account ac1 = new Account("123","USD",20000,ziraat,customer);
+        Account ac2 = new Account("123","TRY",10000,ziraat,customer2);
+        Account ac3 = new InteresAccount("123","TRY",20000,ziraat,customer2);
 
 
-        ziraat.addCustomer(customer);
-        ziraat.addCustomer(cust2);
 
-        System.out.println(ac2.getBalance());
-        System.out.println(ac.getBalance());
+        ziraat.writeAllAccounts();
+        System.out.println("*****************************");
+        ziraat.writeCustomers();
+        System.out.println("********************************");
+        customer.writeAccount();
+        System.out.println("*********************************");
+        customer2.writeAccount();
+        System.out.println("******************************");
 
-        ac2.sendMoney(2000,ac);
 
-        System.out.println(ac2.getBalance());
-        System.out.println(ac.getBalance());
 
-            ziraat.writeCustomers();
-            customer.writeAccount();
-            cust2.writeAccount();
+
+
 
     }
 
