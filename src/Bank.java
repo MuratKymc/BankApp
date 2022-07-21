@@ -16,7 +16,7 @@ public class Bank {
         this.bankName = bankName;
         this.dailyInterestRate = dailyInterestRate;
         this.accumulationRate = accumulationRate;
-        System.out.println("banka oluþtu");
+        System.out.println("Banka oluþtu");
     }
 
     public double getAccumulationRate() {
