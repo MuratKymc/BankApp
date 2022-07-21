@@ -1,10 +1,9 @@
 public class InteresAccount extends Account{
 
     private double intersetRate;
-
     private double accumulationRate;
-
     private double amountOfDebt;
+
     public InteresAccount(String accountID, String accountType, double balance, Bank bank, Customer customer) {
         super(accountID, accountType, balance, bank, customer);
         this.intersetRate = bank.getDailyInterestRate();
@@ -113,16 +112,28 @@ public class InteresAccount extends Account{
     }
 
     public void borrowMoneyWithInterest(double money , int day){
-        this.amountOfDebt = (money /100) * (intersetRate * 365)  * day;
-        setBalance(getBalance() + amountOfDebt);
+        this.amountOfDebt = (money/100) * (getBank().getDailyInterestRate()) * day;
+        setBalance(getBalance() + money);
+        this.amountOfDebt += money;
         System.out.println("Krediniz hesabýnýza iþlenmiþtir.\n" +
-                "Borcunuz = " + amountOfDebt);
+                "Borcunuz = " + amountOfDebt+"" +
+                "\nYeni bakiyeniz = " + getBalance());
+    }
+
+    public void showDept(){
+        System.out.println("Borcunuz : " + amountOfDebt);
 
     }
 
 
+    public void saveUpMoney(int day){
+            double savedMoney = 0;
+            savedMoney = getBalance() + ( getBalance() * (getBank().getAccumulationRate() / 100)* day );
+            setBalance(savedMoney);
 
+        System.out.println("Birikim yapýlmýþ bakiyeniz : " + getBalance());
 
+    }
 
 
 }

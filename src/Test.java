@@ -1,5 +1,3 @@
-import com.sun.security.jgss.GSSUtil;
-
 public class Test {
 
     public static void main(String[] args) {
@@ -12,7 +10,8 @@ public class Test {
         Account ac = new Account("1234","TRY",10000,ziraat,customer);
         Account ac1 = new Account("123","USD",20000,ziraat,customer);
         Account ac2 = new Account("123","TRY",10000,ziraat,customer2);
-        Account ac3 = new InteresAccount("123","TRY",20000,ziraat,customer2);
+        InteresAccount ac3 = new InteresAccount("123","TRY",20000,ziraat,customer2);
+        InteresAccount ac4 = new InteresAccount("123","TRY",10000,ziraat,customer2);
 
 
 
@@ -24,12 +23,20 @@ public class Test {
         System.out.println("*********************************");
         customer2.writeAccount();
         System.out.println("******************************");
+        ac3.borrowMoneyWithInterest(3000,10);
 
+        System.out.println("*************************************");
+        ziraat.writeAllAccounts();
+        System.out.println("****************************");
+        customer2.writeAccount();
+        System.out.println("****************************");
 
-
-
-
+        ac4.saveUpMoney(30);
 
     }
+
+
+
+
 
 }
