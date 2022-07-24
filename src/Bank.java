@@ -16,7 +16,7 @@ public class Bank {
         this.bankName = bankName;
         this.dailyInterestRate = dailyInterestRate;
         this.accumulationRate = accumulationRate;
-        System.out.println("Banka olu?tu");
+        System.out.println("Banka oluþtu");
     }
 
     public double getAccumulationRate() {
@@ -56,7 +56,7 @@ public class Bank {
     }
     public void addCustomer(Customer customer){
         customerList.add(customer);
-        //System.out.println("M??teri eklendi.");
+        System.out.println("Müþteri eklendi.");
     }
 
     public void addAccounts(Account account){
@@ -73,22 +73,22 @@ public class Bank {
 
 
     public void writeCustomers(){
-        System.out.println("******** " + this.bankName + " M??teri Listesi ********");
+        System.out.println("\n******** " + this.bankName + " Müþteri Listesi ********");
 
-        if (customerList.size() <=0){
-            System.out.println("Bankanýn hiç müþterisi yok.\n Müþteri eklemek için 2 ye basýnýz!");
+        if (customerList.size() <= 0){
+            System.out.println("Bankanýn hiç müþterisi yok");
         }else
-            for (int i = 0 ; i< customerList.toArray().length; i++){
-                System.out.println(i+1 + " : " + getCustomerList().get(i).getName() + " " + getCustomerList().get(i).getLastName());
-            }
+        for (int i = 0 ; i< customerList.size(); i++){
+            System.out.println(i+1 + " : " + getCustomerList().get(i).getName() + " " + getCustomerList().get(i).getLastName());
+        }
 
     }
 
     public void writeAllAccounts(){
-        System.out.println("\n******** " + this.bankName + " T?m Hesaplar? ********");
+        System.out.println("\n******** " + this.bankName + " Tüm Hesaplarý ********");
 
         if (accountList.size() <= 0){
-            System.out.println("Bankaya kay?tl? bir hesap bulunamad?.");
+            System.out.println("Bankaya kayýtlý bir hesap bulunamadý.");
         }else
             for (int i = 0 ; i< accountList.size(); i++){
                 System.out.println(i+1 + " -> " + " ID : " + getAccountList().get(i).getAccountID() + "\tType : "

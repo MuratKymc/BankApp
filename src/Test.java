@@ -1,161 +1,90 @@
-import java.nio.file.AccessMode;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Test {
     static ArrayList<Bank> banks = new ArrayList<>();
-
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
         welcome();
-        while (true) {
+
+        while(true){
+
             String a = input.nextLine();
 
-            if (a.equals("q")) {
-                System.out.println("Programdan Ã§Ä±kÄ±lÄ±yor...");
+            if (a.equals("q")){
+                System.out.println("Programdan çıkılıyor...");
                 break;
             } else if (a.equals("1")) {
-                System.out.println("Bankanï¿½zï¿½ seï¿½iniz:");
+                System.out.println("Bankanızı seçiniz:");
                 String isim = input.nextLine();
-                System.out.println("Faiz oranï¿½nï¿½ seï¿½iniz:");
+                System.out.println("Faiz oranını seçiniz:");
                 double IRate = input.nextDouble();
-                System.out.println("Birikim oranï¿½nï¿½ seï¿½iniz:");
+                System.out.println("Birikim oranını seçiniz:");
                 double accRate = input.nextDouble();
-                banks.add(new Bank(isim, IRate, accRate));
+                banks.add(new Bank(isim,IRate,accRate));
                 welcome();
 
-            } else if (a.equals("2")) {
-                System.out.println("Mï¿½ï¿½teri adï¿½nï¿½ giriniz: ");
-                String isim = input.nextLine();
-                System.out.println("Mï¿½ï¿½teri soyadï¿½nï¿½ giriniz: ");
-                String soyisim = input.nextLine();
-                System.out.println("Mï¿½ï¿½teri TC kimlik numarasï¿½nï¿½ giriniz: ");
-                String tcID = input.nextLine();
-                System.out.println("Mï¿½ï¿½teri bankasï¿½nï¿½ seï¿½iniz: ");
+            } else if(a.equals("2")){
+                System.out.println("Müşteri adını giriniz: ");
+                String isim= input.nextLine();
+                System.out.println("Müşteri soyadını giriniz: ");
+                String soyisim= input.nextLine();
+                System.out.println("Müşteri TC kimlik numarasını giriniz: ");
+                String tcID= input.nextLine();
+                System.out.println("Müşteri bankasını seçiniz: ");
                 bankalar();
-                int i = input.nextInt();
-                System.out.println("Mï¿½ï¿½teri kaydï¿½nï¿½z " + i + ". bankaya eklendi!");
-                banks.get(i - 1).addCustomer(new Customer(isim, soyisim, tcID, banks.get(i - 1)));
+                int i=input.nextInt();
+                System.out.println("Müşteri kaydınız "+ i+". bankaya eklendi!");
+                banks.get(i-1).addCustomer(new Customer(isim,soyisim, tcID, banks.get(i-1)));
                 welcome();
-            } else if (a.equals("3")) {
-                System.out.println(" Hesap numarasï¿½ giriniz: ");
-                String id = input.next();
-                System.out.println(" Hesabï¿½n tipini giriniz: ");
-                String type = input.next();
-                System.out.println("Mï¿½ï¿½teri bankasï¿½nï¿½ seï¿½iniz: ");
+            } else if(a.equals("3")){
+                System.out.println(" Hesap numarası giriniz: ");
+                String id= input.next();
+                System.out.println(" Hesabın tipini giriniz: ");
+                String type=input.next();
+                System.out.println("Müşteri bankasını seçiniz: ");
                 bankalar();
+                int i=input.nextInt();
+                banks.get(i-1).writeCustomers();
+                int j=input.nextInt();
+                banks.get(i-1).getCustomerList().get(j-1).addAccount(new Account(id,type,0,banks.get(i-1),banks.get(i-1).getCustomerList().get(j-1)));
 
-                int i = input.nextInt();
-                banks.get(i - 1).writeCustomers();
-                int j = input.nextInt();
-                banks.get(i - 1).getCustomerList().get(j - 1).addAccount(new Account(id, type, 0, banks.get(i - 1), banks.get(i - 1).getCustomerList().get(j - 1)));
-                welcome();
             } else if (a.equals("4")) {
-                System.out.println("Hangi bankanÄ±n mÃ¼sterilerini gÃ¶rÃ¼ntÃ¼lemek istersiniz? ");
-                bankalar();
-                int choose=input.nextInt();
-                banks.get(choose-1).writeCustomers();
-                welcome();
+                System.out.println("Bankanın müşterilerini görüntüle");
+                banks.get(banks.size()).writeCustomers();
             } else if (a.equals("5")) {
-                System.out.println("Hangi banka mÃ¼sterilerinin hesaplarï¿½nï¿½ gï¿½rï¿½ntï¿½lemek istersiniz? ");
-                bankalar();
-                int i= input.nextInt();
-                banks.get(i-1).writeCustomers();
-                System.out.println("Hangi mÃ¼ÅŸterinin hesaplarÄ±nÄ± gÃ¶rÃ¼ntÃ¼lemek istersiniz?");
-                int choose= input.nextInt();
-                banks.get(i-1).getCustomerList().get(choose-1).writeAccount();
-                System.out.println("Ana menÃ¼ye dÃ¶nmek isterseniz 'A' yazÄ±nÄ±z!");
-                String menu=input.next();
-                if(menu.equals("A")){
-                    welcome();
-                }
-                else break;
-            } else if (a.equals("6")) {
-                System.out.println("Para gÃ¶ndereceÄŸiniz bankayÄ± seÃ§iniz");
-                bankalar();
-                int i = input.nextInt();
-                System.out.println("Para gÃ¶ndermek istediÄŸiniz mÃ¼ÅŸteriyi seÃ§iniz");
-                banks.get(i-1).writeCustomers();
-                int j = input.nextInt();
-                System.out.println(banks.get(i - 1).getCustomerList().get(j - 1) +
-                        " mÃ¼ÅŸterisini seÃ§tiniz. \n GÃ¶ndermek istediÄŸiniz tutarÄ± giriniz: ");
-                int tutar = input.nextInt();
-                System.out.println("Para gÃ¶ndermek istediÄŸiniz hesabÄ± seÃ§iniz");
-                banks.get(i - 1).getCustomerList().get(j - 1).writeAccount();
-                int choose= input.nextInt();
-                banks.get(i - 1).getCustomerList().get(j - 1).getAccountList().get(choose-1).depositMoney(tutar);
-                welcome();
-
-            } else if (a.equals("7")) {
-                System.out.println("Para Ã§ekeceÄŸiniz bankayÄ± seÃ§iniz ");
-                bankalar();
-                int i = input.nextInt();
-                System.out.println("Para Ã§ekmek istediÄŸiniz mÃ¼ÅŸteriyi seÃ§iniz");
-                banks.get(i - 1).writeCustomers();
-                int j= input.nextInt();
-                System.out.println(banks.get(i - 1).getCustomerList().get(j - 1) + " mÃ¼ÅŸterisini seÃ§tiniz. \n Ã‡ekmek istediÄŸiniz tutarÄ± giriniz: ");
-                int withdraw= input.nextInt();
-                banks.get(i - 1).getCustomerList().get(j - 1).writeAccount();
-                System.out.println("SeÃ§tiÄŸiniz mÃ¼ÅŸterinin hesaplarÄ±nÄ± listeledik.SeÃ§mek istediÄŸiniz hesabÄ±n sÄ±ra numarasÄ±nÄ± giriniz:");
-                int queue = input.nextInt();
-                banks.get(i - 1).getCustomerList().get(j - 1).getAccountList().get(queue-1).withdrawMoney(withdraw);
-                welcome();
+                System.out.println("Müşterinin hesaplarını görüntüle");
+                banks.get(banks.size()).getCustomerList().get(0).writeAccount();
 
             }
-            else if (a.equals("8")){
-                System.out.println("Birikim yapmayÄ± hedeflediÄŸiniz bankayÄ± seÃ§iniz: ");
-                bankalar();
-                int i= input.nextInt();
-                System.out.println("Birikim yaptÄ±rmak istediÄŸiniz mÃ¼ÅŸteriyi seÃ§iniz: ");
-                banks.get(i-1).writeCustomers();
-                int j= input.nextInt();
-                System.out.println(banks.get(i-1).getCustomerList().get(j-1)+
-                        " mÃ¼ÅŸterisinin tÃ¼m hesaplarÄ±nÄ± gÃ¶rÃ¼ntÃ¼lemek iÃ§in 4 e basÄ±nÄ±z.");
-                int show= input.nextInt();
-                banks.get(i-1).getCustomerList().get(j-1).writeAccount();
-                System.out.println("Hangi hesabÄ±nda birikim yapmak istersiniz? ");
-                int choose= input.nextInt();
-                banks.get(i-1).getCustomerList().get(j-1).getAccountList().get(choose-1);
-                System.out.println("Birikim hesabÄ±na yÃ¼kleyeceÄŸiniz tutarÄ± belirleyin");
-                int money= input.nextInt();
-                System.out.println("KaÃ§ gÃ¼n birikim yapacaÄŸÄ±nÄ±zÄ± giriniz ");
-                int day= input.nextInt();
-                banks.get(i-1).getCustomerList().get(j-1).getAccountList().get(choose-1).saveUpMoney(money,day);
-                welcome();
-
-            }
-            else if(a.equals("9")){
-                System.out.println("Kredi Ã§ekmek istediÄŸiniz bankayÄ± seÃ§iniz: ");
-                bankalar();
-                int bankChoose= input.nextInt();
-                System.out.println("BankanÄ±n mÃ¼ÅŸterisi olup hesap aÃ§malÄ±sÄ±nÄ±z");
-                Customer fakeCustomer=new Customer();
-                banks.get(bankChoose-1).addCustomer(fakeCustomer);
-                System.out.println("Bu bankadaki kredi Ã§ekim miktarÄ±nÄ± Ã¶ÄŸrenmek iÃ§in sanal bir vadeli hesap oluÅŸturmalÄ±sÄ±nÄ±z. \n" +
-                        "Bunun iÃ§in 3 e basÄ±nÄ±z.");
-                int createAcc= input.nextInt();
-                InteresAccount fakeAcc= (InteresAccount) new Account("123","deposit",0,banks.get(bankChoose-1),fakeCustomer);
-                System.out.println("Ana paranÄ±zÄ± giriniz: ");
-                int mainMoney= input.nextInt();
-                System.out.println("Kredi tutarÄ±nÄ± giriniz:");
-                int interest= input.nextInt();
-                fakeAcc.borrowMoneyWithInterest(mainMoney,interest);
 
 
-            }
+        }
+
+        //banks.get(0).writeCustomers();
+
+        //banks.get(0).getCustomerList().get(0).writeAccount();
+
+
+    }
+    public static void welcome(){
+        System.out.println("Hoşgeldiniz! Ana ekran gösteriliyor\n " +
+                "***********************************" +" \n " +"q -Çıkış" +
+                "\n 1 -Banka oluşturma"+"\n 2-Müşteri oluşturma"+"\n 3-Hesap oluşturma"+"\n 4-Banka müşterilerini görüntüle" +
+                "\n 5- Müşterilerin hesapları"+"\n 6-Para Gönder"+"\n 7-Para çek"+"\n " +
+                "8-Para getir"+"\n 9-Birikim Yap"+"\n 10-Kredi Çek");
+    }
+
+
+    public static void bankalar(){
+        for (int i  = 0;i < banks.size(); i++){
+            System.out.println((i+1) + " = " + banks.get(i).getBankName());
         }
     }
 
-    public static void welcome() {
-        System.out.println("Hoï¿½geldiniz! Ana ekran gï¿½steriliyor\n " +
-                "***********************************" + " \n " + "q -ï¿½ï¿½kï¿½ï¿½" +
-                "\n 1 -Banka oluï¿½turma" + "\n 2-MÃ¼ÅŸteri oluÅŸturma" + "\n 3-Hesap oluï¿½turma" + "\n 4-Banka mÃ¼ÅŸterilerini gÃ¶rÃ¼ntÃ¼le" +
-                "\n 5- MÃ¼ÅŸterilerin hesaplarÄ±nÄ± gÃ¶rÃ¼ntÃ¼le" + "\n 6-Para GÃ¶nder" + "\n 7-Para Ã§ek" + "\n 8-Birikim Yap" + "\n 9-Kredi Ã§ek");
-    }
-    public static void bankalar() {
-        for (int i = 0; i < banks.size(); i++) {
-            System.out.println((i + 1) + " = " + banks.get(i).getBankName());
-        }
-    }
+
+
+
 
 }
