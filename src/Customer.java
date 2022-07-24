@@ -15,6 +15,10 @@ public class Customer {
         this.bank = bank;
     }
 
+    public Customer() {
+
+    }
+
     public Bank getBank() {
         return bank;
     }
@@ -62,7 +66,7 @@ public class Customer {
     }
     public void addAccount(Account account){
         accountList.add(account);
-        System.out.println("Hesap baþarýyla eklendi.");
+        System.out.println("Hesap ba?ar?yla eklendi.");
     }
 
     public void addCustomerToBank(){
@@ -70,12 +74,12 @@ public class Customer {
 
     }
     public void writeAccount(){
-        System.out.println("\n******** " + this.name + " " + this.lastName + " Hesaplarý ********");
+        System.out.println("\n******** " + this.name + " " + this.lastName + " Hesaplar? ********");
 
-        if (accountList.size() <= 0){
-            System.out.println("Müþterinin hiç hesabý yok.");
+        if (accountList.toArray().length <= 0){
+            System.out.println("Müsterinin hiç hesabý yok.");
         }else
-            for (int i = 0 ; i< accountList.size(); i++){
+            for (int i = 0 ; i< accountList.toArray().length; i++){
                 System.out.println(i+1 + " -> " + " ID : " + getAccountList().get(i).getAccountID() + "\tType : "
                         + getAccountList().get(i).getAccountType()+ "\t Balance : " + getAccountList().get(i).getBalance() );
             }

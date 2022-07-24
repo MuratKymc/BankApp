@@ -13,7 +13,6 @@ public class Account {
         this.bank = bank;
         this.customer = customer;
         addAccountToBank();
-        addAccountToCustomer();
     }
 
     public Bank getBank() {
@@ -65,14 +64,13 @@ public class Account {
             return true;
 
     }
-
     public void sendMoney(double amount, Account account){
         if (checkBalance(amount)){
-            this.balance -= amount;
-            account.setBalance(account.getBalance() + amount);
-            System.out.println("Ýþlem baþarýlý. Yeni bakiye : " + this.balance);
+           // bu satýr bakiyeyi azaltýrken bir altýndaki yeni bakiyeyi arttýrmýyor mu ? this.balance-= amount;
+            account.setBalance(account.getBalance() - amount);
+            System.out.println("??lem ba?ar?l?. Yeni bakiye : " + this.balance);
         }else
-            System.out.println("Ýþlem baþarýsýz.");
+            System.out.println("??lem ba?ar?s?z.");
     }
 
 
@@ -83,25 +81,30 @@ public class Account {
         } else
             return true;
     }
-
     public void withdrawMoney(double amount) {
-
         if (checkOut(amount)){
-            System.out.println("Ýþleminiz yapiliyor...");
+            System.out.println("??leminiz yapiliyor...");
             balance -= amount;
-            System.out.println("Ýþleminiz baþarýlý. Yeni bakiye : " + balance);
+            System.out.println("??leminiz ba?ar?l?. Yeni bakiye : " + balance);
         }else{
-            System.out.println("Ýþleminiz yapýlýyor...");
+            System.out.println("??leminiz yap?l?yor...");
             System.out.println("Bakiyeniz yeterli degil.");
 
         }
 
     }
     public void depositMoney(double amount) {
-        System.out.println("Ýþleminiz yapiliyor...");
+        System.out.println("??leminiz yapiliyor...");
         balance += amount;
-        System.out.println("Ýþleminiz baþarýlý. Yeni bakiye : " + balance);
+        System.out.println("??leminiz ba?ar?l?. Yeni bakiye : " + balance);
+    }
 
+    public void saveUpMoney(double money,int day){
+        double savedMoney = 0;
+        savedMoney = getBalance() + ( money * (getBank().getAccumulationRate() / 100)* day );
+        setBalance(savedMoney+money);
+        System.out.println("Yüklediðiniz tutara karþýlýk gelen birikim miktarý: "+ savedMoney);
+        System.out.println("Toplam bakiyeniz : " + getBalance());
 
     }
 

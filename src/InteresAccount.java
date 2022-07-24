@@ -115,7 +115,7 @@ public class InteresAccount extends Account{
         this.amountOfDebt = (money/100) * (getBank().getDailyInterestRate()) * day;
         setBalance(getBalance() + money);
         this.amountOfDebt += money;
-        System.out.println("Krediniz hesabýnýza iþlenmiþtir.\n" +
+        System.out.println("Krediniz hesab?n?za i?lenmi?tir.\n" +
                 "Borcunuz = " + amountOfDebt+"" +
                 "\nYeni bakiyeniz = " + getBalance());
     }
@@ -125,13 +125,12 @@ public class InteresAccount extends Account{
 
     }
 
-
-    public void saveUpMoney(int day){
-            double savedMoney = 0;
-            savedMoney = getBalance() + ( getBalance() * (getBank().getAccumulationRate() / 100)* day );
-            setBalance(savedMoney);
-
-        System.out.println("Birikim yapýlmýþ bakiyeniz : " + getBalance());
+    @Override
+    public void saveUpMoney(double money, int day){
+        double savedMoney = 0;
+        savedMoney = getBalance() + ( money * (getBank().getAccumulationRate() / 100)* day );
+        setBalance(savedMoney);
+        System.out.println("Birikim yap?lm?? bakiyeniz : " + getBalance());
 
     }
 

@@ -16,6 +16,7 @@ public class Bank {
         this.bankName = bankName;
         this.dailyInterestRate = dailyInterestRate;
         this.accumulationRate = accumulationRate;
+        System.out.println("Banka olu?tu");
     }
 
     public double getAccumulationRate() {
@@ -55,7 +56,7 @@ public class Bank {
     }
     public void addCustomer(Customer customer){
         customerList.add(customer);
-        System.out.println("Müþteri eklendi.");
+        //System.out.println("M??teri eklendi.");
     }
 
     public void addAccounts(Account account){
@@ -72,22 +73,22 @@ public class Bank {
 
 
     public void writeCustomers(){
-        System.out.println("\n******** " + this.bankName + " Müþteri Listesi ********");
+        System.out.println("******** " + this.bankName + " M??teri Listesi ********");
 
-        if (customerList.size() <= 0){
-            System.out.println("Bankanýn hiç müþterisi yok");
+        if (customerList.size() <=0){
+            System.out.println("Bankanýn hiç müþterisi yok.\n Müþteri eklemek için 2 ye basýnýz!");
         }else
-        for (int i = 0 ; i< customerList.size(); i++){
-            System.out.println(i+1 + " : " + getCustomerList().get(i).getName() + " " + getCustomerList().get(i).getLastName());
-        }
+            for (int i = 0 ; i< customerList.toArray().length; i++){
+                System.out.println(i+1 + " : " + getCustomerList().get(i).getName() + " " + getCustomerList().get(i).getLastName());
+            }
 
     }
 
     public void writeAllAccounts(){
-        System.out.println("\n******** " + this.bankName + " Tüm Hesaplarý ********");
+        System.out.println("\n******** " + this.bankName + " T?m Hesaplar? ********");
 
         if (accountList.size() <= 0){
-            System.out.println("Bankaya kayýtlý bir hesap bulunamadý.");
+            System.out.println("Bankaya kay?tl? bir hesap bulunamad?.");
         }else
             for (int i = 0 ; i< accountList.size(); i++){
                 System.out.println(i+1 + " -> " + " ID : " + getAccountList().get(i).getAccountID() + "\tType : "
