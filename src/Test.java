@@ -10,9 +10,6 @@ public class Test {
         welcome();
         while (true) {
             String a = input.nextLine();
-
-            Customer customer = new Customer("Hamza","Y�lmaz","23566778",ziraat);
-            Customer customer2 = new Customer("Murat","Kuyumcu","12311",ziraat);
             if (a.equals("q")) {
                 System.out.println("Programdan çıkılıyor...");
                 break;
@@ -46,12 +43,6 @@ public class Test {
                 String type = input.next();
                 System.out.println("M��teri bankas�n� se�iniz: ");
                 bankalar();
-
-                Account ac = new Account("1234","TRY",10000,ziraat,customer);
-                Account ac1 = new Account("123","USD",20000,ziraat,customer);
-                Account ac2 = new Account("123","TRY",10000,ziraat,customer2);
-                InteresAccount ac3 = new InteresAccount("123","TRY",20000,ziraat,customer2);
-                InteresAccount ac4 = new InteresAccount("123","TRY",10000,ziraat,customer2);
                 int i = input.nextInt();
                 banks.get(i - 1).writeCustomers();
                 int j = input.nextInt();
@@ -130,14 +121,6 @@ public class Test {
                 banks.get(i-1).getCustomerList().get(j-1).getAccountList().get(choose-1).saveUpMoney(money,day);
                 welcome();
 
-                ziraat.writeAllAccounts();
-                System.out.println("*****************************");
-                ziraat.writeCustomers();
-                System.out.println("********************************");
-                customer.writeAccount();
-                System.out.println("*********************************");
-                customer2.writeAccount();
-                System.out.println("******************************");
             }
             else if(a.equals("9")){
                 System.out.println("Kredi çekmek istediğiniz bankayı seçiniz: ");
@@ -156,11 +139,6 @@ public class Test {
                 int interest= input.nextInt();
                 fakeAcc.borrowMoneyWithInterest(mainMoney,interest);
 
-                System.out.println("*************************************");
-                ziraat.writeAllAccounts();
-                System.out.println("****************************");
-                customer2.writeAccount();
-                System.out.println("****************************");
 
 
             }
