@@ -37,6 +37,7 @@ public class Test {
                 banks.get(i - 1).addCustomer(new Customer(isim, soyisim, tcID, banks.get(i - 1)));
                 welcome();
             } else if (a.equals("3")) {
+
                 System.out.println(" Hesap numarasýný giriniz: ");
                 String id = input.next();
                 System.out.println(" Hesabýn tipini giriniz: ");
@@ -62,12 +63,7 @@ public class Test {
                 System.out.println("Hangi müþterinin hesaplarýný görüntelemek istersiniz?");
                 int choose= input.nextInt();
                 banks.get(i-1).getCustomerList().get(choose-1).writeAccount();
-                System.out.println("Ana menüye dönmek isterseniz 'A' yazýnýz!");
-                String menu=input.next();
-                if(menu.equals("A")){
-                    welcome();
-                }
-                else break;
+                welcome();
             } else if (a.equals("6")) {
                 System.out.println("Para göndereceðiniz bankayý seçiniz");
                 bankalar();
@@ -122,26 +118,27 @@ public class Test {
                 welcome();
 
             }
-            else if(a.equals("9")){
+            /*else if(a.equals("9")){
                 System.out.println("Kredi çekmek istediðiniz bankayý seçiniz: ");
                 bankalar();
                 int bankChoose= input.nextInt();
-                System.out.println("Bankanýn müþterisi olup hesap açmalýsýnýz");
-                Customer fakeCustomer=new Customer();
-                banks.get(bankChoose-1).addCustomer(fakeCustomer);
-                System.out.println("Bu bankadaki kredi çekim miktarýný öðrenmek için sanal bir vadeli hesap oluþturmalýsýnýz. \n" +
-                        "Bunun için 3 e basýnýz.");
-                int createAcc= input.nextInt();
-                InteresAccount fakeAcc= (InteresAccount) new Account("123","deposit",0,banks.get(bankChoose-1),fakeCustomer);
+                if (banks.get(bankChoose-1).getCustomerList().size() <=0)
+                    System.out.println("Bankanýn müþterisi olup hesap açmalýsýnýz");
+                    Customer fakeCustomer = new Customer();
+                    banks.get(bankChoose - 1).addCustomer(fakeCustomer);
+                    System.out.println("Bu bankadaki kredi çekim miktarýný öðrenmek için sanal bir vadeli hesap oluþturmalýsýnýz. \n" +
+                            "Bunun için 3 e basýnýz.");
+
+                    int createAcc = input.nextInt();
+                    InteresAccount fakeAcc = (InteresAccount) new Account("123", "deposit", 0, banks.get(bankChoose - 1), fakeCustomer);
                 System.out.println("Ana paranýzý giriniz: ");
                 int mainMoney= input.nextInt();
                 System.out.println("Kredi tutarýný giriniz:");
                 int interest= input.nextInt();
                 fakeAcc.borrowMoneyWithInterest(mainMoney,interest);
+            }*/
 
 
-
-            }
         }
     }
 
