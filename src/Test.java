@@ -97,7 +97,7 @@ public class Test {
 
             }
             else if (a.equals("8")){
-                System.out.println("Birikim yapmayý hedeflediðiniz bankayý seçiniz: ");
+                System.out.println("Birikim yapmayý hedeflediðiniz bankayý seçiniz lütfen: ");
                 bankalar();
                 int i= input.nextInt();
                 System.out.println("Birikim yaptýrmak istediðiniz müþteriyi seçiniz: ");
