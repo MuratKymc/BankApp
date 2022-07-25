@@ -66,7 +66,7 @@ public class Customer {
     }
     public void addAccount(Account account){
         accountList.add(account);
-        System.out.println("Hesap ba?ar?yla eklendi.");
+        System.out.println("Hesap baþarýyla eklendi.");
     }
 
     public void addCustomerToBank(){
@@ -74,11 +74,13 @@ public class Customer {
 
     }
     public void writeAccount(){
-        System.out.println("\n******** " + this.name + " " + this.lastName + " Hesaplar? ********");
+        System.out.println("\n******** " + this.name + " " + this.lastName + " Hesaplar ********");
 
         if (accountList.toArray().length <= 0){
-            System.out.println("Müsterinin hiç hesabý yok.");
+            System.out.println("Müsterinin hiç hesabý yok. Hesap açmak için 3 e basýnýz.");
+
         }else
+            System.out.println("Hangi hesabýnda birikim yapmak istersiniz? ");
             for (int i = 0 ; i< accountList.toArray().length; i++){
                 System.out.println(i+1 + " -> " + " ID : " + getAccountList().get(i).getAccountID() + "\tType : "
                         + getAccountList().get(i).getAccountType()+ "\t Balance : " + getAccountList().get(i).getBalance() );

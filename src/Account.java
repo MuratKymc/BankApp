@@ -68,9 +68,9 @@ public class Account {
         if (checkBalance(amount)){
            // bu satýr bakiyeyi azaltýrken bir altýndaki yeni bakiyeyi arttýrmýyor mu ? this.balance-= amount;
             account.setBalance(account.getBalance() - amount);
-            System.out.println("??lem ba?ar?l?. Yeni bakiye : " + this.balance);
+            System.out.println("Ýþlem baþarýlý. Yeni bakiye : " + this.balance);
         }else
-            System.out.println("??lem ba?ar?s?z.");
+            System.out.println("Ýþlem baþarýsýz.");
     }
 
 
@@ -83,20 +83,20 @@ public class Account {
     }
     public void withdrawMoney(double amount) {
         if (checkOut(amount)){
-            System.out.println("??leminiz yapiliyor...");
+            System.out.println("Ýþleminiz yapiliyor...");
             balance -= amount;
-            System.out.println("??leminiz ba?ar?l?. Yeni bakiye : " + balance);
+            System.out.println("Ýþleminiz baþarýlý. Yeni bakiye : " + balance);
         }else{
-            System.out.println("??leminiz yap?l?yor...");
+            System.out.println("Ýþleminiz yapýlýyor...");
             System.out.println("Bakiyeniz yeterli degil.");
 
         }
 
     }
     public void depositMoney(double amount) {
-        System.out.println("??leminiz yapiliyor...");
+        System.out.println("Ýþleminiz yapiliyor...");
         balance += amount;
-        System.out.println("??leminiz ba?ar?l?. Yeni bakiye : " + balance);
+        System.out.println("Ýþleminiz baþarýlý. Yeni bakiye : " + balance);
     }
 
     public void saveUpMoney(double money,int day){
