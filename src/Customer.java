@@ -86,5 +86,6 @@ public class Customer {
                         + getAccountList().get(i).getAccountType()+ "\t Balance : " + getAccountList().get(i).getBalance() );
             }
 
+
     }
 }

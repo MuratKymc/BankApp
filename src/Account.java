@@ -81,6 +81,7 @@ public class Account {
         } else
             return true;
     }
+
     public void withdrawMoney(double amount) {
         if (checkOut(amount)){
             System.out.println("Ýþleminiz yapiliyor...");
